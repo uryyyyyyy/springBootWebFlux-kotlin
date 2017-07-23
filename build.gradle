@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.M2'
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		maven { url "http://repo.spring.io/release" }
+		maven { url "http://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven { url "http://repo.spring.io/release" }
+	maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
+	testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+bootRun {
+	dependencies {
+		compile "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+	}
+}
