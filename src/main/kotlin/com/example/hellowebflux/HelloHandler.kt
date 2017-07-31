@@ -12,12 +12,13 @@ import reactor.core.publisher.Mono
 open class HelloHandler {
 
   fun hello(req: ServerRequest): Mono<ServerResponse> {
-    return ok().body(Mono.just("hello wossrld"))
+    return ok().body(Mono.just("hello world"))
   }
 
   fun helloJson(req: ServerRequest): Mono<ServerResponse> {
+    val bool = req.pathVariable("boot").toBoolean()
     return ok()
             .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .body(Mono.just(Response(true)))
+            .body(Mono.just(Response(bool)))
   }
 }

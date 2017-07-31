@@ -10,6 +10,6 @@ open class HealthCheckRoute(private val helloHandler: HelloHandler) {
     @Bean
     open fun healthCheckRouter() = router {
         GET("/", helloHandler::hello)
-        GET("/json", helloHandler::helloJson)
+        GET("/json/{boot}", helloHandler::helloJson)
     }
 }
